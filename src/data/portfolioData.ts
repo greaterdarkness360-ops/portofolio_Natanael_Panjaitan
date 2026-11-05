@@ -2,46 +2,65 @@ import type { PortfolioItem } from '../types/portfolio';
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    id: 'ecommerce-ops',
-    title: 'Operasional E-Commerce & Pelayanan Pelanggan',
-    subtitle: 'Pengelolaan Toko Daring Multikanal (Shopee)',
+    id: 'thesis-blockchain-genz',
+    title: 'Transformasi Nilai Uang Era Digital & Perilaku Konsumsi Gen Z',
+    subtitle: 'Studi Dampak Sosial Blockchain dan Cryptocurrency terhadap Pola Konsumsi Generasi Muda di Medan',
+    category: 'HUMAN_OPS',
+    imagePlaceholder: './assets/thesis-main.jpg',
+    sociologicalContext:
+      'Kemunculan aset digital berbasis blockchain dan cryptocurrency telah menciptakan pergeseran cara pandang generasi muda terhadap uang, risiko, dan konsumsi. Di kalangan Generasi Z perkotaan, instrumen kripto tidak lagi sekadar dipandang sebagai alat investasi teknis, melainkan simbol gaya hidup modern dan kecepatan finansial yang kerap memengaruhi keputusan belanja sehari-hari.',
+    solutionExecution:
+      'Penelitian kualitatif mendalam di FISIP Universitas Sumatera Utara (IPK 3.75) yang membedah bagaimana adopsi blockchain dan cryptocurrency menggeser persepsi nilai uang, rasionalitas finansial, serta gaya hidup Generasi Z di Kota Medan melalui teknik wawancara mendalam dan analisis tematik lapangan.',
+    stackOrSkills: [
+      'Digital Capitalism',
+      'Consumer Behavior',
+      'Cryptocurrency Adoption',
+      'Qualitative Research',
+      'FISIP USU'
+    ],
+    highlightMetric: 'Flagship Thesis Research (IPK 3.75)'
+  },
+  {
+    id: 'academic-consultant',
+    title: 'Konsultasi Metodologi Riset & Analisis Perilaku Sosial-Ekonomi',
+    subtitle: 'Perancangan Instrumen Purposive Sampling dan Pemetaan Data Kualitatif Lintas Studi Kasus Urban',
+    category: 'HUMAN_OPS',
+    imagePlaceholder: './assets/project-2.jpg',
+    sociologicalContext:
+      'Peneliti lapangan dan mahasiswa tingkat akhir sering mengalami kesulitan dalam merancang instrumen purposive sampling yang tepat sasaran serta menerjemahkan transkrip wawancara mentah menjadi temuan sosiologis yang terstruktur, tajam, dan siap dipertanggungjawabkan secara akademik.',
+    solutionExecution:
+      'Pendampingan metodologi riset kualitatif dan analisis data lapangan pada 4 studi kasus: (1) Rasionalitas transaksi pembayaran digital Tunai, QRIS, dan M-Banking, (2) Konstruksi gaya hidup pengguna gawai melalui media sosial, (3) Fenomena flexing dan kelas sosial komunitas otomotif XMAX, serta (4) Dinamika gerakan sosial alternatif subkultur urban.',
+    stackOrSkills: [
+      'Qualitative Data Analysis',
+      'Purposive Sampling',
+      'In-Depth Interviewing',
+      'Consumer Insights',
+      'Urban Ethnography'
+    ],
+    highlightMetric: 'Independent Research Consultant'
+  },
+  {
+    id: 'nael-souvenir-ops',
+    title: 'Nael Souvenir: Operasional Ritel Fisik, E-Commerce & Negosiasi B2C',
+    subtitle: 'Pengelolaan Penjualan Langsung Toko Fisik dan Shopee, Negosiasi Grosir, serta Kontrol Stok',
     category: 'HUMAN_OPS',
     imagePlaceholder: './assets/project-1.jpg',
     galleryImages: [
       './assets/project-1-1.jpg',
-      './assets/project-1-2.jpg',
+      './assets/project-1-2.jpg'
     ],
     sociologicalContext:
-      'Membeli souvenir pernikahan bukanlah belanja barang harian biasa. Pembeli biasanya adalah calon pengantin yang mudah cemas karena menyangkut hari pernikahan mereka, ketepatan waktu pengiriman barang, hasil sablon nama, serta biaya yang pas dengan anggaran. Balasan pesan yang lambat atau jawaban penjual yang kaku bisa langsung membuat calon pembeli pindah ke toko lain.',
+      'Transaksi souvenir pernikahan melibatkan ekspektasi emosional yang tinggi dari calon pengantin dan keluarga besar, baik saat berbelanja langsung di toko fisik maupun secara daring. Ketidakpastian ketersediaan stok, negosiasi harga pesanan jumlah besar (grosir), hingga ketepatan waktu pengerjaan menuntut pengelolaan operasional dan komunikasi yang sangat presisi.',
     solutionExecution:
-      'Mengelola operasional harian toko Souvenir Pernikahan Kota Medan di Shopee secara terpadu. Mengedepankan cara berkomunikasi yang ramah, cepat tanggap, dan menenangkan kekhawatiran pembeli. Setiap kendala pengiriman dan keluhan diselesaikan dengan memberi jalan keluar yang adil, sehingga performa toko tetap memiliki reputasi tinggi dan penjualan terus berjalan stabil.',
+      'Mengelola siklus operasional harian di toko fisik Nael Souvenir (Medan) dan toko online Shopee. Menangani konsultasi serta negosiasi harga partai besar dengan calon pengantin, pengawasan quality control inventaris, hingga rekapitulasi arus kas harian yang menginspirasi lahirnya aplikasi Buku Barang dan Money Tracker.',
     stackOrSkills: [
-      'Komunikasi Pelanggan',
-      'Negosiasi Penjualan B2C',
-      'Penanganan Komplain',
-      'Shopee Seller Center',
-      'Manajemen Pengiriman'
+      'B2C Direct Negotiation',
+      'Shopee E-Commerce',
+      'Physical Inventory Control',
+      'Daily Sales Reporting',
+      'Customer Relations'
     ],
-    highlightMetric: 'Shopee Active Operations'
-  },
-  {
-    id: 'academic-consultant',
-    title: 'Konsultan Riset Akademik & Pembimbing Skripsi',
-    subtitle: 'Pendampingan Metodologi Penelitian dan Persiapan Ujian Sidang',
-    category: 'HUMAN_OPS',
-    imagePlaceholder: './assets/project-2.jpg',
-    sociologicalContext:
-      'Banyak mahasiswa tingkat akhir merasa buntu ketika menyusun tugas akhir penelitian. Mereka memiliki rekaman wawancara yang sangat banyak dari lapangan, tetapi bingung bagaimana menyaring obrolan tersebut menjadi bab pembahasan yang rapi, logis, dan sesuai dengan teori ilmiah saat diuji oleh dosen penguji.',
-    solutionExecution:
-      'Memberikan pendampingan intensif satu per satu untuk membantu mahasiswa menyusun alur berpikir riset mereka. Mengajarkan cara mengelompokkan hasil wawancara menggunakan metode analisis tematik Braun dan Clarke, mengaitkannya dengan teori ilmu sosial yang tepat (seperti Bourdieu, Weber, serta Berger dan Luckmann), serta melatih cara berbicara yang meyakinkan di depan penguji sidang.',
-    stackOrSkills: [
-      'Analisis Tematik (Braun & Clarke)',
-      'Penataan Alur Pikir Masalah',
-      'Bimbingan Akademik',
-      'Komunikasi Persuasif',
-      'Penguasaan Teori Sosial'
-    ],
-    highlightMetric: 'Qualitative Research & Defense Mentoring'
+    highlightMetric: 'Omnichannel B2C & Store Operations'
   },
   {
     id: 'panat-kas',

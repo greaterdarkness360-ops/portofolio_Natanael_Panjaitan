@@ -5,7 +5,7 @@ const coreSkills = [
   'Analisis Sosial & Interpersonal',
   'Komunikasi Strategis',
   'B2C Operations',
-  'Vibe Coding',
+  'AI-Augmented Engineering',
   'AI System Orchestration'
 ];
 
