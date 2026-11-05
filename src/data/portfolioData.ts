@@ -8,8 +8,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'HUMAN_OPS',
     imagePlaceholder: './assets/thesis-main.jpg',
     galleryImages: [
-      './assets/thesis-abstract.jpg',
-      './assets/thesis-proof.jpg'
+      './assets/thesis-abstract.jpg'
     ],
     sociologicalContext:
       'Kemunculan aset digital berbasis blockchain dan cryptocurrency telah menciptakan pergeseran cara pandang generasi muda terhadap uang, risiko, dan konsumsi. Di kalangan Generasi Z perkotaan, instrumen kripto tidak lagi sekadar dipandang sebagai alat investasi teknis, melainkan simbol gaya hidup modern dan kecepatan finansial yang kerap memengaruhi keputusan belanja sehari-hari.',
@@ -175,8 +174,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'TECH',
     imagePlaceholder: './assets/project-8.jpg',
     galleryImages: [
-      './assets/project-8-1.jpg',
-      './assets/project-8-2.jpg'
+      './assets/project-8-1.jpg'
     ],
     sociologicalContext:
       'Saat bepergian dan bekerja menggunakan tablet atau laptop di tempat sempit seperti kafe atau meja kecil, membawa banyak perangkat tambahan seperti mouse fisik sering kali merepotkan dan menghambat kecepatan kerja.',
