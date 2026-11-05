@@ -2,11 +2,15 @@ import type { PortfolioItem } from '../types/portfolio';
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    id: 'thesis-blockchain-genz',
+    id: 'flagship-thesis',
     title: 'Transformasi Nilai Uang Era Digital & Perilaku Konsumsi Gen Z',
     subtitle: 'Studi Dampak Sosial Blockchain dan Cryptocurrency terhadap Pola Konsumsi Generasi Muda di Medan',
     category: 'HUMAN_OPS',
     imagePlaceholder: './assets/thesis-main.jpg',
+    galleryImages: [
+      './assets/thesis-abstract.jpg',
+      './assets/thesis-proof.jpg'
+    ],
     sociologicalContext:
       'Kemunculan aset digital berbasis blockchain dan cryptocurrency telah menciptakan pergeseran cara pandang generasi muda terhadap uang, risiko, dan konsumsi. Di kalangan Generasi Z perkotaan, instrumen kripto tidak lagi sekadar dipandang sebagai alat investasi teknis, melainkan simbol gaya hidup modern dan kecepatan finansial yang kerap memengaruhi keputusan belanja sehari-hari.',
     solutionExecution:
@@ -21,11 +25,14 @@ export const portfolioItems: PortfolioItem[] = [
     highlightMetric: 'Flagship Thesis Research (IPK 3.75)'
   },
   {
-    id: 'academic-consultant',
+    id: 'research-consultant',
     title: 'Konsultasi Metodologi Riset & Analisis Perilaku Sosial-Ekonomi',
     subtitle: 'Perancangan Instrumen Purposive Sampling dan Pemetaan Data Kualitatif Lintas Studi Kasus Urban',
     category: 'HUMAN_OPS',
     imagePlaceholder: './assets/project-2.jpg',
+    galleryImages: [
+      './assets/project-2-1.jpg'
+    ],
     sociologicalContext:
       'Peneliti lapangan dan mahasiswa tingkat akhir sering mengalami kesulitan dalam merancang instrumen purposive sampling yang tepat sasaran serta menerjemahkan transkrip wawancara mentah menjadi temuan sosiologis yang terstruktur, tajam, dan siap dipertanggungjawabkan secara akademik.',
     solutionExecution:
@@ -47,7 +54,8 @@ export const portfolioItems: PortfolioItem[] = [
     imagePlaceholder: './assets/project-1.jpg',
     galleryImages: [
       './assets/project-1-1.jpg',
-      './assets/project-1-2.jpg'
+      './assets/project-1-2.jpg',
+      './assets/project-1-3.jpg'
     ],
     sociologicalContext:
       'Transaksi souvenir pernikahan melibatkan ekspektasi emosional yang tinggi dari calon pengantin dan keluarga besar, baik saat berbelanja langsung di toko fisik maupun secara daring. Ketidakpastian ketersediaan stok, negosiasi harga pesanan jumlah besar (grosir), hingga ketepatan waktu pengerjaan menuntut pengelolaan operasional dan komunikasi yang sangat presisi.',
