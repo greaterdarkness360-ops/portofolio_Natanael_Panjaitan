@@ -1,7 +1,7 @@
-&lt;template&gt;
-  &lt;footer id=&quot;contact&quot; class=&quot;py-24 px-6 border-t border-white/5 bg-gradient-to-b from-[#121212] to-[#0A0A0A] relative overflow-hidden&quot;&gt;
-    &lt;!-- Ambient Footer Glow --&gt;
-    &lt;div class=&quot;absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#38BDF8]/5 rounded-full blur-[140px] pointer-events-none&quot;&gt;&lt;/div&gt;
+<template>
+  <footer id="contact" class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-[#121212] to-[#0A0A0A] relative overflow-hidden">
+    <!-- Ambient Footer Glow -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#38BDF8]/5 rounded-full blur-[140px] pointer-events-none"></div>
 
     <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
       <!-- Section Title -->
@@ -54,8 +54,8 @@
         &copy; {{ new Date().getFullYear() }} Natanael Metio Panjaitan, S.Sos. All rights reserved.
       </p>
     </div>
-  &lt;/footer&gt;
-&lt;/template&gt;
+  </footer>
+</template>
 
-&lt;script setup lang=&quot;ts&quot;&gt;
-&lt;/script&gt;
+<script setup lang="ts">
+</script>
