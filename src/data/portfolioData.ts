@@ -4,7 +4,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'flagship-thesis',
     title: 'Transformasi Nilai Uang Era Digital & Perilaku Konsumsi Gen Z',
-    subtitle: 'Studi Dampak Sosial Blockchain dan Cryptocurrency terhadap Pola Konsumsi Generasi Muda di Medan',
+    subtitle: 'Studi Dampak Blockchain & Kripto terhadap Konsumsi Gen Z Medan',
     category: 'HUMAN_OPS',
     imagePlaceholder: './assets/thesis-main.jpg',
     galleryImages: [
@@ -13,20 +13,20 @@ export const portfolioItems: PortfolioItem[] = [
     sociologicalContext:
       'Kemunculan aset digital berbasis blockchain dan cryptocurrency telah menciptakan pergeseran cara pandang generasi muda terhadap uang, risiko, dan konsumsi. Di kalangan Generasi Z perkotaan, instrumen kripto tidak lagi sekadar dipandang sebagai alat investasi teknis, melainkan simbol gaya hidup modern dan kecepatan finansial yang kerap memengaruhi keputusan belanja sehari-hari.',
     solutionExecution:
-      'Penelitian kualitatif mendalam di FISIP Universitas Sumatera Utara (IPK 3.75) yang membedah bagaimana adopsi blockchain dan cryptocurrency menggeser persepsi nilai uang, rasionalitas finansial, serta gaya hidup Generasi Z di Kota Medan melalui teknik wawancara mendalam dan analisis tematik lapangan.',
+      'Penelitian kualitatif mendalam di FISIP Universitas Sumatera Utara (IPK 3.75) yang diterbitkan sebagai artikel ilmiah Penulis Utama di Journal of Sumatera Sociological Indicators (JSSI, 2026). Riset ini turut diperkuat oleh pengalaman riset lapangan pada Studi Sosial Samosir dan Sinabung (2024) melalui wawancara mendalam serta observasi partisipatif lintas budaya.',
     stackOrSkills: [
       'Digital Capitalism',
       'Consumer Behavior',
-      'Cryptocurrency Adoption',
       'Qualitative Research',
+      'JSSI Publication 2026',
       'FISIP USU'
     ],
-    highlightMetric: 'Flagship Thesis Research (IPK 3.75)'
+    highlightMetric: 'Penulis Utama JSSI 2026 (IPK 3.75)'
   },
   {
     id: 'research-consultant',
     title: 'Konsultasi Metodologi Riset & Analisis Perilaku Sosial-Ekonomi',
-    subtitle: 'Perancangan Instrumen Purposive Sampling dan Pemetaan Data Kualitatif Lintas Studi Kasus Urban',
+    subtitle: 'Pendampingan Metodologi Kualitatif & Analisis Data Lintas Studi Kasus',
     category: 'HUMAN_OPS',
     imagePlaceholder: './assets/project-2.jpg',
     galleryImages: [
@@ -35,7 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
     sociologicalContext:
       'Peneliti lapangan dan mahasiswa tingkat akhir sering mengalami kesulitan dalam merancang instrumen purposive sampling yang tepat sasaran serta menerjemahkan transkrip wawancara mentah menjadi temuan sosiologis yang terstruktur, tajam, dan siap dipertanggungjawabkan secara akademik.',
     solutionExecution:
-      'Pendampingan metodologi riset kualitatif dan analisis data lapangan pada 4 studi kasus: (1) Rasionalitas transaksi pembayaran digital Tunai, QRIS, dan M-Banking, (2) Konstruksi gaya hidup pengguna gawai melalui media sosial, (3) Fenomena flexing dan kelas sosial komunitas otomotif XMAX, serta (4) Dinamika gerakan sosial alternatif subkultur urban.',
+      'Pendampingan metodologi riset kualitatif, penyusunan instrumen wawancara, dan pengolahan matriks koding tematik hingga mahasiswa meraih evaluasi akademik optimal (Nilai A dan B) pada 4 studi kasus: (1) Rasionalitas transaksi pembayaran digital Tunai, QRIS, dan M-Banking, (2) Konstruksi gaya hidup pengguna gawai melalui media sosial, (3) Fenomena flexing dan kelas sosial komunitas otomotif XMAX, serta (4) Dinamika gerakan sosial alternatif subkultur urban.',
     stackOrSkills: [
       'Qualitative Data Analysis',
       'Purposive Sampling',
@@ -43,23 +43,22 @@ export const portfolioItems: PortfolioItem[] = [
       'Consumer Insights',
       'Urban Ethnography'
     ],
-    highlightMetric: 'Independent Research Consultant'
+    highlightMetric: 'Evaluasi Akademik Nilai A & B'
   },
   {
     id: 'nael-souvenir-ops',
     title: 'Nael Souvenir: Operasional Ritel Fisik, E-Commerce & Negosiasi B2C',
-    subtitle: 'Pengelolaan Penjualan Langsung Toko Fisik dan Shopee, Negosiasi Grosir, serta Kontrol Stok',
+    subtitle: 'Operasional Toko Fisik, Shopee Star+, Negosiasi Grosir & Kontrol Stok',
     category: 'HUMAN_OPS',
     imagePlaceholder: './assets/project-1.jpg',
     galleryImages: [
       './assets/project-1-1.jpg',
-      './assets/project-1-2.jpg',
-      './assets/project-1-3.jpg'
+      './assets/project-1-2.jpg'
     ],
     sociologicalContext:
       'Transaksi souvenir pernikahan melibatkan ekspektasi emosional yang tinggi dari calon pengantin dan keluarga besar, baik saat berbelanja langsung di toko fisik maupun secara daring. Ketidakpastian ketersediaan stok, negosiasi harga pesanan jumlah besar (grosir), hingga ketepatan waktu pengerjaan menuntut pengelolaan operasional dan komunikasi yang sangat presisi.',
     solutionExecution:
-      'Mengelola siklus operasional harian di toko fisik Nael Souvenir (Medan) dan toko online Shopee. Menangani konsultasi serta negosiasi harga partai besar dengan calon pengantin, pengawasan quality control inventaris, hingga rekapitulasi arus kas harian yang menginspirasi lahirnya aplikasi Buku Barang dan Money Tracker.',
+      'Mengelola siklus operasional harian di toko fisik Nael Souvenir Medan sejak 2020 (rating Google Maps 5.0) serta toko online Shopee berpredikat Star+ dengan penilaian 4.8/5.0. Menangani konsultasi pelanggan, negosiasi harga partai besar, pengawasan quality control inventaris, hingga rekapitulasi arus kas harian yang menginspirasi lahirnya aplikasi Buku Barang dan Money Tracker.',
     stackOrSkills: [
       'B2C Direct Negotiation',
       'Shopee E-Commerce',
@@ -67,12 +66,12 @@ export const portfolioItems: PortfolioItem[] = [
       'Daily Sales Reporting',
       'Customer Relations'
     ],
-    highlightMetric: 'Omnichannel B2C & Store Operations'
+    highlightMetric: 'Shopee Star+ 4.8/5.0 & Maps 5.0'
   },
   {
     id: 'panat-kas',
     title: 'Panat Kas: Pengelola Kas Komunitas Lintas Perangkat',
-    subtitle: 'Transparansi Keuangan Komunitas di Android dan Web (iPhone Ready)',
+    subtitle: 'Transparansi Kas Komunitas Lintas Perangkat Android dan Web',
     category: 'TECH',
     imagePlaceholder: './assets/project-3.jpg',
     galleryImages: [
@@ -114,7 +113,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'money-tracker',
     title: 'Money Tracker: Pencatat Arus Kas Personal dan Usaha Ringan',
-    subtitle: 'Pemantauan Keuangan Harian Tanpa Distraksi Fitur Rumit',
+    subtitle: 'Pemantauan Keuangan Harian Ringkas Tanpa Distraksi Fitur Rumit',
     category: 'TECH',
     imagePlaceholder: './assets/project-5.jpg',
     sociologicalContext:
@@ -132,7 +131,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'towr-ai',
     title: 'TOWR: Asisten Cerdas Mandiri di Perangkat Android',
-    subtitle: 'Kecerdasan Buatan Tanpa Bergantung Penuh pada Server Luar',
+    subtitle: 'Asisten AI Hybrid On-Device Gemma dan Cloud Gemini di Android',
     category: 'TECH',
     imagePlaceholder: './assets/project-6.jpg',
     sociologicalContext:
@@ -151,7 +150,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'run-firewall',
     title: 'RUN: Pengontrol Lalu Lintas Data & Pelindung Kuota',
-    subtitle: 'Pengaturan Privasi dan Internet Aplikasi Mandiri di Android',
+    subtitle: 'Pengaturan Privasi dan Akses Internet Per Aplikasi di Android',
     category: 'TECH',
     imagePlaceholder: './assets/project-7.jpg',
     sociologicalContext:
@@ -170,7 +169,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'dimensional-vektor',
     title: 'Dimensional & Vektor: Pengubah Ponsel Menjadi Mouse dan Touchpad',
-    subtitle: 'Pemanfaatan Smartphone Sebagai Alat Kendali Produktivitas',
+    subtitle: 'Smartphone sebagai Virtual Trackpad dan Bluetooth HID Berlatensi Rendah',
     category: 'TECH',
     imagePlaceholder: './assets/project-8.jpg',
     galleryImages: [
@@ -192,7 +191,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'memora-notes',
     title: 'Memora: Buku Catatan Visual Serba Cepat Tanpa Sinyal',
-    subtitle: 'Aplikasi Catatan Offline dengan Tampilan Masonry Dinamis',
+    subtitle: 'Aplikasi Catatan Offline Ringan dengan Tampilan Masonry Dinamis',
     category: 'TECH',
     imagePlaceholder: './assets/project-9.jpg',
     sociologicalContext:
