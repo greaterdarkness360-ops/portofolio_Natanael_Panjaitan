@@ -1,29 +1,29 @@
-&lt;script setup lang=&quot;ts&quot;&gt;
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from &#39;vue&#39;;
-import type { PortfolioItem } from &#39;../types/portfolio&#39;;
+<script setup lang="ts">
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
+import type { PortfolioItem } from '../types/portfolio';
 
-const props = defineProps&lt;{
+const props = defineProps<{
   item: PortfolioItem | null;
   isOpen: boolean;
   currentIndex?: number;
   totalItems?: number;
   hasPrev?: boolean;
   hasNext?: boolean;
-}&gt;();
+}>();
 
-const emit = defineEmits&lt;{
-  (e: &#39;close&#39;): void;
-  (e: &#39;prev&#39;): void;
-  (e: &#39;next&#39;): void;
-}&gt;();
+const emit = defineEmits<{
+  (e: 'close'): void;
+  (e: 'prev'): void;
+  (e: 'next'): void;
+}>();
 
-const previewImage = ref&lt;string | null&gt;(null);
-const modalCardRef = ref&lt;HTMLElement | null&gt;(null);
+const previewImage = ref<string | null>(null);
+const modalCardRef = ref<HTMLElement | null>(null);
 
 // Reset pratinjau otomatis jika modal utama ditutup
 watch(
-  () =&gt; props.isOpen,
-  (newVal) =&gt; {
+  () => props.isOpen,
+  (newVal) => {
     if (!newVal) {
       previewImage.value = null;
     }
@@ -32,8 +32,8 @@ watch(
 
 // Reset pratinjau dan kembalikan scroll modal ke atas saat berpindah proyek
 watch(
-  () =&gt; props.item?.id,
-  async () =&gt; {
+  () => props.item?.id,
+  async () => {
     previewImage.value = null;
     await nextTick();
     if (modalCardRef.value) {
@@ -42,77 +42,77 @@ watch(
   }
 );
 
-const allImages = computed(() =&gt; {
+const allImages = computed(() => {
   if (!props.item) return [];
   const list: string[] = [];
   if (props.item.imagePlaceholder) {
     list.push(props.item.imagePlaceholder);
   }
-  if (props.item.galleryImages &amp;&amp; props.item.galleryImages.length &gt; 0) {
+  if (props.item.galleryImages && props.item.galleryImages.length > 0) {
     list.push(...props.item.galleryImages);
   }
   return list;
 });
 
-const openPreview = (img: string) =&gt; {
+const openPreview = (img: string) => {
   previewImage.value = img;
 };
 
-const closePreview = () =&gt; {
+const closePreview = () => {
   previewImage.value = null;
 };
 
-const handleKeydown = (event: KeyboardEvent) =&gt; {
+const handleKeydown = (event: KeyboardEvent) => {
   if (!props.isOpen) return;
 
-  if (event.key === &#39;Escape&#39;) {
+  if (event.key === 'Escape') {
     if (previewImage.value) {
       closePreview();
     } else {
-      emit(&#39;close&#39;);
+      emit('close');
     }
   }
 };
 
-onMounted(() =&gt; {
-  window.addEventListener(&#39;keydown&#39;, handleKeydown);
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
 });
 
-onUnmounted(() =&gt; {
-  window.removeEventListener(&#39;keydown&#39;, handleKeydown);
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown);
 });
-&lt;/script&gt;
+</script>
 
-&lt;template&gt;
-  &lt;!-- Modal Utama --&gt;
-  &lt;Transition
-    enter-active-class=&quot;transition duration-300 ease-out&quot;
-    enter-from-class=&quot;opacity-0&quot;
-    enter-to-class=&quot;opacity-100&quot;
-    leave-active-class=&quot;transition duration-200 ease-in&quot;
-    leave-from-class=&quot;opacity-100&quot;
-    leave-to-class=&quot;opacity-0&quot;
-  &gt;
-    &lt;div
-      v-if=&quot;isOpen &amp;&amp; item&quot;
-      class=&quot;fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto&quot;
-      @click.self=&quot;emit(&#39;close&#39;)&quot;
-    &gt;
-      &lt;div
-        ref=&quot;modalCardRef&quot;
-        class=&quot;bg-[#1A1A1A] border border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative my-8&quot;
-      &gt;
-        &lt;!-- Tombol Tutup Modal --&gt;
-        &lt;button
-          type=&quot;button&quot;
-          class=&quot;absolute top-5 right-5 text-white bg-white/15 hover:bg-white/25 border border-white/20 w-9 h-9 rounded-full flex items-center justify-center transition-colors&quot;
-          @click=&quot;emit(&#39;close&#39;)&quot;
-          aria-label=&quot;Tutup modal&quot;
-        &gt;
-          &lt;svg class=&quot;w-4 h-4&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot;&gt;
-            &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M6 18L18 6M6 6l12 12&quot; /&gt;
-          &lt;/svg&gt;
-        &lt;/button&gt;
+<template>
+  <!-- Modal Utama -->
+  <Transition
+    enter-active-class="transition duration-300 ease-out"
+    enter-from-class="opacity-0"
+    enter-to-class="opacity-100"
+    leave-active-class="transition duration-200 ease-in"
+    leave-from-class="opacity-100"
+    leave-to-class="opacity-0"
+  >
+    <div
+      v-if="isOpen && item"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto"
+      @click.self="emit('close')"
+    >
+      <div
+        ref="modalCardRef"
+        class="bg-[#1A1A1A] border border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative my-8"
+      >
+        <!-- Tombol Tutup Modal -->
+        <button
+          type="button"
+          class="absolute top-5 right-5 text-white bg-white/15 hover:bg-white/25 border border-white/20 w-9 h-9 rounded-full flex items-center justify-center transition-colors"
+          @click="emit('close')"
+          aria-label="Tutup modal"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
 
         <!-- Judul & Kategori -->
         <div class="mb-6 pr-10">
@@ -250,9 +250,9 @@ onUnmounted(() =&gt; {
         </div>
       </div>
     </div>
-  &lt;/Transition&gt;
+  </Transition>
 
-  &lt;!-- Lightbox Overlay (Layar Penuh Saat Gambar Diketuk) --&gt;
+  <!-- Lightbox Overlay (Layar Penuh Saat Gambar Diketuk) -->
   <Transition
     enter-active-class="transition duration-200 ease-out"
     enter-from-class="opacity-0"
@@ -285,5 +285,5 @@ onUnmounted(() =&gt; {
         Ketuk di mana saja atau tekan Esc untuk menutup
       </p>
     </div>
-  &lt;/Transition&gt;
-&lt;/template&gt;
+  </Transition>
+</template>
