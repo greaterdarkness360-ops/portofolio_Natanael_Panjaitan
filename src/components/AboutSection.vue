@@ -1,17 +1,17 @@
-&lt;script setup lang=&quot;ts&quot;&gt;
-import { onMounted, onUnmounted, ref } from &#39;vue&#39;;
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const coreSkills = [
-  &#39;Analisis Sosial &amp; Interpersonal&#39;,
-  &#39;Komunikasi Strategis&#39;,
-  &#39;B2C Operations&#39;,
-  &#39;AI-Augmented Engineering&#39;,
-  &#39;AI System Orchestration&#39;
+  'Analisis Sosial & Interpersonal',
+  'Komunikasi Strategis',
+  'B2C Operations',
+  'AI-Augmented Engineering',
+  'AI System Orchestration'
 ];
 
 interface ActivityCard {
   id: string;
-  type: &#39;image&#39; | &#39;video&#39;;
+  type: 'image' | 'video';
   src: string;
   title: string;
   subtitle: string;
@@ -24,67 +24,67 @@ interface ActivityCard {
 
 const activityCards: ActivityCard[] = [
   {
-    id: &#39;riset-kualitatif&#39;,
-    type: &#39;video&#39;,
-    src: &#39;./assets/field-research.mp4&#39;,
-    title: &#39;Riset Kualitatif&#39;,
-    subtitle: &#39;Wawancara Warga&#39;,
-    previewTitle: &#39;Riset Kualitatif: Observasi &amp; Wawancara Mendalam bersama Warga&#39;,
-    dotColor: &#39;bg-emerald-400 animate-pulse&#39;,
-    hoverBorder: &#39;hover:border-emerald-400/40&#39;,
-    badgeText: &#39;Perbesar Video&#39;,
-    badgeClass: &#39;bg-emerald-500/80 border-white/20 backdrop-blur-sm font-medium&#39;
+    id: 'riset-kualitatif',
+    type: 'video',
+    src: './assets/field-research.mp4',
+    title: 'Riset Kualitatif',
+    subtitle: 'Wawancara Warga',
+    previewTitle: 'Riset Kualitatif: Observasi & Wawancara Mendalam bersama Warga',
+    dotColor: 'bg-emerald-400 animate-pulse',
+    hoverBorder: 'hover:border-emerald-400/40',
+    badgeText: 'Perbesar Video',
+    badgeClass: 'bg-emerald-500/80 border-white/20 backdrop-blur-sm font-medium'
   },
   {
-    id: &#39;diskusi-kualitatif&#39;,
-    type: &#39;video&#39;,
-    src: &#39;./assets/team-discussion.mp4&#39;,
-    title: &#39;Diskusi Kualitatif&#39;,
-    subtitle: &#39;Briefing Tim&#39;,
-    previewTitle: &#39;Diskusi Kualitatif: Koordinasi &amp; Briefing Tim Peneliti di Lapangan&#39;,
-    dotColor: &#39;bg-sky-400 animate-pulse&#39;,
-    hoverBorder: &#39;hover:border-sky-400/40&#39;,
-    badgeText: &#39;Perbesar Video&#39;,
-    badgeClass: &#39;bg-sky-500/80 border-white/20 backdrop-blur-sm font-medium&#39;
+    id: 'diskusi-kualitatif',
+    type: 'video',
+    src: './assets/team-discussion.mp4',
+    title: 'Diskusi Kualitatif',
+    subtitle: 'Briefing Tim',
+    previewTitle: 'Diskusi Kualitatif: Koordinasi & Briefing Tim Peneliti di Lapangan',
+    dotColor: 'bg-sky-400 animate-pulse',
+    hoverBorder: 'hover:border-sky-400/40',
+    badgeText: 'Perbesar Video',
+    badgeClass: 'bg-sky-500/80 border-white/20 backdrop-blur-sm font-medium'
   },
   {
-    id: &#39;operasional-relasi&#39;,
-    type: &#39;image&#39;,
-    src: &#39;./assets/activity-2.jpg&#39;,
-    title: &#39;Operasional &amp; Relasi&#39;,
-    subtitle: &#39;Layanan B2C&#39;,
-    previewTitle: &#39;Operasional &amp; Relasi Pelanggan E-Commerce&#39;,
-    dotColor: &#39;bg-yellow-200&#39;,
-    hoverBorder: &#39;hover:border-yellow-200/40&#39;,
-    badgeText: &#39;Perbesar&#39;,
-    badgeClass: &#39;bg-black/75 border-white/15&#39;
+    id: 'operasional-relasi',
+    type: 'image',
+    src: './assets/activity-2.jpg',
+    title: 'Operasional & Relasi',
+    subtitle: 'Layanan B2C',
+    previewTitle: 'Operasional & Relasi Pelanggan E-Commerce',
+    dotColor: 'bg-yellow-200',
+    hoverBorder: 'hover:border-yellow-200/40',
+    badgeText: 'Perbesar',
+    badgeClass: 'bg-black/75 border-white/15'
   },
   {
-    id: &#39;eksplorasi-sistem&#39;,
-    type: &#39;image&#39;,
-    src: &#39;./assets/activity-3.jpg&#39;,
-    title: &#39;Eksplorasi Sistem&#39;,
-    subtitle: &#39;Otomasi &amp; Kode&#39;,
-    previewTitle: &#39;Eksplorasi Sistem &amp; Rekayasa Perangkat Lunak&#39;,
-    dotColor: &#39;bg-purple-400&#39;,
-    hoverBorder: &#39;hover:border-purple-400/40&#39;,
-    badgeText: &#39;Perbesar&#39;,
-    badgeClass: &#39;bg-black/75 border-white/15&#39;
+    id: 'eksplorasi-sistem',
+    type: 'image',
+    src: './assets/activity-3.jpg',
+    title: 'Eksplorasi Sistem',
+    subtitle: 'Otomasi & Kode',
+    previewTitle: 'Eksplorasi Sistem & Rekayasa Perangkat Lunak',
+    dotColor: 'bg-purple-400',
+    hoverBorder: 'hover:border-purple-400/40',
+    badgeText: 'Perbesar',
+    badgeClass: 'bg-black/75 border-white/15'
   }
 ];
 
 interface MediaPreview {
-  type: &#39;image&#39; | &#39;video&#39;;
+  type: 'image' | 'video';
   src: string;
   title: string;
 }
 
-const activePreview = ref&lt;MediaPreview | null&gt;(null);
-const sectionRef = ref&lt;HTMLElement | null&gt;(null);
+const activePreview = ref<MediaPreview | null>(null);
+const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let observer: IntersectionObserver | null = null;
 
-const openPreview = (card: ActivityCard) =&gt; {
+const openPreview = (card: ActivityCard) => {
   activePreview.value = {
     type: card.type,
     src: card.src,
@@ -92,22 +92,22 @@ const openPreview = (card: ActivityCard) =&gt; {
   };
 };
 
-const closePreview = () =&gt; {
+const closePreview = () => {
   activePreview.value = null;
 };
 
-const handleKeydown = (event: KeyboardEvent) =&gt; {
-  if (event.key === &#39;Escape&#39; &amp;&amp; activePreview.value) {
+const handleKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && activePreview.value) {
     closePreview();
   }
 };
 
-onMounted(() =&gt; {
-  window.addEventListener(&#39;keydown&#39;, handleKeydown);
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
 
-  if (typeof IntersectionObserver !== &#39;undefined&#39; &amp;&amp; sectionRef.value) {
+  if (typeof IntersectionObserver !== 'undefined' && sectionRef.value) {
     observer = new IntersectionObserver(
-      (entries) =&gt; {
+      (entries) => {
         if (entries[0]?.isIntersecting) {
           isVisible.value = true;
           observer?.disconnect();
@@ -121,28 +121,28 @@ onMounted(() =&gt; {
   }
 });
 
-onUnmounted(() =&gt; {
-  window.removeEventListener(&#39;keydown&#39;, handleKeydown);
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown);
   observer?.disconnect();
 });
-&lt;/script&gt;
+</script>
 
-&lt;template&gt;
-  &lt;section
-    id=&quot;about&quot;
-    ref=&quot;sectionRef&quot;
-    class=&quot;py-20 px-4 max-w-6xl mx-auto transition-all duration-700 ease-out&quot;
-    :class=&quot;isVisible ? &#39;opacity-100 translate-y-0&#39; : &#39;opacity-0 translate-y-6&#39;&quot;
-  &gt;
-    &lt;!-- Header Section --&gt;
-    &lt;div class=&quot;mb-12&quot;&gt;
-      &lt;span class=&quot;text-xs uppercase tracking-widest text-yellow-200/80 font-sans font-medium&quot;&gt;
-        Kilas Balik &amp; Fondasi Kerja
-      &lt;/span&gt;
-      &lt;h2 class=&quot;text-3xl md:text-4xl font-sans font-bold tracking-tight text-white mt-1&quot;&gt;
-        Tentang Diri &amp; Realitas Lapangan
-      &lt;/h2&gt;
-    &lt;/div&gt;
+<template>
+  <section
+    id="about"
+    ref="sectionRef"
+    class="py-20 px-4 max-w-6xl mx-auto transition-all duration-700 ease-out"
+    :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+  >
+    <!-- Header Section -->
+    <div class="mb-12">
+      <span class="text-xs uppercase tracking-widest text-yellow-200/80 font-sans font-medium">
+        Kilas Balik & Fondasi Kerja
+      </span>
+      <h2 class="text-3xl md:text-4xl font-sans font-bold tracking-tight text-white mt-1">
+        Tentang Diri & Realitas Lapangan
+      </h2>
+    </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
       <!-- Kolom Kiri: Narasi Profil (3 Paragraf Seimbang) & Skill Tags -->
@@ -388,5 +388,5 @@ onUnmounted(() =&gt; {
         </p>
       </div>
     </Transition>
-  &lt;/section&gt;
-&lt;/template&gt;
+  </section>
+</template>
