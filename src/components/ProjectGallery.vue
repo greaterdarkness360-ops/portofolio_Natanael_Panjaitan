@@ -1,20 +1,20 @@
-&lt;template&gt;
-  &lt;section
-    id=&quot;works&quot;
-    ref=&quot;sectionRef&quot;
-    class=&quot;py-24 px-6 max-w-6xl mx-auto border-t border-white/5 transition-all duration-700 ease-out&quot;
-    :class=&quot;isVisible ? &#39;opacity-100 translate-y-0&#39; : &#39;opacity-0 translate-y-6&#39;&quot;
-  &gt;
-    &lt;!-- Header --&gt;
-    &lt;div class=&quot;flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6&quot;&gt;
-      &lt;div&gt;
-        &lt;div class=&quot;inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#86EFAC]/20 bg-[#1A1A1A] text-[#86EFAC] text-xs font-semibold uppercase tracking-widest mb-3&quot;&gt;
+<template>
+  <section
+    id="works"
+    ref="sectionRef"
+    class="py-24 px-6 max-w-6xl mx-auto border-t border-white/5 transition-all duration-700 ease-out"
+    :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+  >
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#86EFAC]/20 bg-[#1A1A1A] text-[#86EFAC] text-xs font-semibold uppercase tracking-widest mb-3">
           Portofolio Terpilih
-        &lt;/div&gt;
-        &lt;h2 class=&quot;text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-[#F8FAFC]&quot;&gt;
-          Karya &amp; Eksekusi Sistem
-        &lt;/h2&gt;
-      &lt;/div&gt;
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-[#F8FAFC]">
+          Karya & Eksekusi Sistem
+        </h2>
+      </div>
 
       <!-- Filter Buttons -->
       <div class="flex flex-wrap gap-2">
@@ -237,83 +237,83 @@
       @prev="navigateModal(-1)"
       @next="navigateModal(1)"
     />
-  &lt;/section&gt;
-&lt;/template&gt;
+  </section>
+</template>
 
-&lt;script setup lang=&quot;ts&quot;&gt;
-import { computed, onMounted, onUnmounted, ref } from &#39;vue&#39;;
-import { portfolioItems } from &#39;../data/portfolioData&#39;;
-import type { PortfolioItem, ProjectCategory } from &#39;../types/portfolio&#39;;
-import ProjectModal from &#39;./ProjectModal.vue&#39;;
+<script setup lang="ts">
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { portfolioItems } from '../data/portfolioData';
+import type { PortfolioItem, ProjectCategory } from '../types/portfolio';
+import ProjectModal from './ProjectModal.vue';
 
-const activeCategory = ref&lt;ProjectCategory&gt;(&#39;ALL&#39;);
+const activeCategory = ref<ProjectCategory>('ALL');
 const featuredIndex = ref(0);
 const isModalOpen = ref(false);
 const selectedIndex = ref(0);
-const sectionRef = ref&lt;HTMLElement | null&gt;(null);
+const sectionRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let observer: IntersectionObserver | null = null;
 
 const categories = [
-  { key: &#39;ALL&#39; as ProjectCategory, label: &#39;Semua Karya&#39; },
-  { key: &#39;HUMAN_OPS&#39; as ProjectCategory, label: &#39;Relasi Manusia &amp; Bisnis&#39; },
-  { key: &#39;TECH&#39; as ProjectCategory, label: &#39;Rekayasa Perangkat Lunak&#39; },
+  { key: 'ALL' as ProjectCategory, label: 'Semua Karya' },
+  { key: 'HUMAN_OPS' as ProjectCategory, label: 'Relasi Manusia & Bisnis' },
+  { key: 'TECH' as ProjectCategory, label: 'Rekayasa Perangkat Lunak' },
 ];
 
-const filteredItems = computed(() =&gt; {
-  if (activeCategory.value === &#39;ALL&#39;) return portfolioItems;
-  return portfolioItems.filter(item =&gt; item.category === activeCategory.value);
+const filteredItems = computed(() => {
+  if (activeCategory.value === 'ALL') return portfolioItems;
+  return portfolioItems.filter(item => item.category === activeCategory.value);
 });
 
-const featuredItem = computed&lt;PortfolioItem | null&gt;(() =&gt; {
+const featuredItem = computed<PortfolioItem | null>(() => {
   if (filteredItems.value.length === 0) return null;
   const safeIndex = featuredIndex.value % filteredItems.value.length;
   return filteredItems.value[safeIndex] ?? filteredItems.value[0];
 });
 
-const selectedItem = computed&lt;PortfolioItem | null&gt;(() =&gt; {
+const selectedItem = computed<PortfolioItem | null>(() => {
   if (!isModalOpen.value || filteredItems.value.length === 0) return null;
   return filteredItems.value[selectedIndex.value] ?? null;
 });
 
-const selectCategory = (category: ProjectCategory) =&gt; {
+const selectCategory = (category: ProjectCategory) => {
   activeCategory.value = category;
   featuredIndex.value = 0;
   selectedIndex.value = 0;
 };
 
-const prevFeatured = () =&gt; {
+const prevFeatured = () => {
   const total = filteredItems.value.length;
   if (total === 0) return;
   featuredIndex.value = (featuredIndex.value - 1 + total) % total;
 };
 
-const nextFeatured = () =&gt; {
+const nextFeatured = () => {
   const total = filteredItems.value.length;
   if (total === 0) return;
   featuredIndex.value = (featuredIndex.value + 1) % total;
 };
 
-const openModal = (item: PortfolioItem) =&gt; {
-  const idx = filteredItems.value.findIndex(entry =&gt; entry.id === item.id);
-  selectedIndex.value = idx &gt;= 0 ? idx : 0;
+const openModal = (item: PortfolioItem) => {
+  const idx = filteredItems.value.findIndex(entry => entry.id === item.id);
+  selectedIndex.value = idx >= 0 ? idx : 0;
   isModalOpen.value = true;
 };
 
-const closeModal = () =&gt; {
+const closeModal = () => {
   isModalOpen.value = false;
 };
 
-const navigateModal = (direction: number) =&gt; {
+const navigateModal = (direction: number) => {
   const total = filteredItems.value.length;
-  if (total &lt;= 1) return;
+  if (total <= 1) return;
   selectedIndex.value = (selectedIndex.value + direction + total) % total;
 };
 
-onMounted(() =&gt; {
-  if (typeof IntersectionObserver !== &#39;undefined&#39; &amp;&amp; sectionRef.value) {
+onMounted(() => {
+  if (typeof IntersectionObserver !== 'undefined' && sectionRef.value) {
     observer = new IntersectionObserver(
-      (entries) =&gt; {
+      (entries) => {
         if (entries[0]?.isIntersecting) {
           isVisible.value = true;
           observer?.disconnect();
@@ -327,7 +327,7 @@ onMounted(() =&gt; {
   }
 });
 
-onUnmounted(() =&gt; {
+onUnmounted(() => {
   observer?.disconnect();
 });
-&lt;/script&gt;
+</script>
