@@ -1,87 +1,130 @@
-<script setup lang="ts">
-import { computed, ref, watch } from 'vue';
-import type { PortfolioItem } from '../types/portfolio';
+&lt;script setup lang=&quot;ts&quot;&gt;
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from &#39;vue&#39;;
+import type { PortfolioItem } from &#39;../types/portfolio&#39;;
 
-const props = defineProps<{
+const props = defineProps&lt;{
   item: PortfolioItem | null;
   isOpen: boolean;
-}>();
+  currentIndex?: number;
+  totalItems?: number;
+  hasPrev?: boolean;
+  hasNext?: boolean;
+}&gt;();
 
-const emit = defineEmits<{
-  (e: 'close'): void;
-}>();
+const emit = defineEmits&lt;{
+  (e: &#39;close&#39;): void;
+  (e: &#39;prev&#39;): void;
+  (e: &#39;next&#39;): void;
+}&gt;();
 
-const previewImage = ref<string | null>(null);
+const previewImage = ref&lt;string | null&gt;(null);
+const modalCardRef = ref&lt;HTMLElement | null&gt;(null);
 
 // Reset pratinjau otomatis jika modal utama ditutup
 watch(
-  () => props.isOpen,
-  (newVal) => {
+  () =&gt; props.isOpen,
+  (newVal) =&gt; {
     if (!newVal) {
       previewImage.value = null;
     }
   }
 );
 
-const allImages = computed(() => {
+// Reset pratinjau dan kembalikan scroll modal ke atas saat berpindah proyek
+watch(
+  () =&gt; props.item?.id,
+  async () =&gt; {
+    previewImage.value = null;
+    await nextTick();
+    if (modalCardRef.value) {
+      modalCardRef.value.scrollTop = 0;
+    }
+  }
+);
+
+const allImages = computed(() =&gt; {
   if (!props.item) return [];
   const list: string[] = [];
   if (props.item.imagePlaceholder) {
     list.push(props.item.imagePlaceholder);
   }
-  if (props.item.galleryImages && props.item.galleryImages.length > 0) {
+  if (props.item.galleryImages &amp;&amp; props.item.galleryImages.length &gt; 0) {
     list.push(...props.item.galleryImages);
   }
   return list;
 });
 
-const openPreview = (img: string) => {
+const openPreview = (img: string) =&gt; {
   previewImage.value = img;
 };
 
-const closePreview = () => {
+const closePreview = () =&gt; {
   previewImage.value = null;
 };
-</script>
 
-<template>
-  <!-- Modal Utama -->
-  <Transition
-    enter-active-class="transition duration-300 ease-out"
-    enter-from-class="opacity-0"
-    enter-to-class="opacity-100"
-    leave-active-class="transition duration-200 ease-in"
-    leave-from-class="opacity-100"
-    leave-to-class="opacity-0"
-  >
-    <div
-      v-if="isOpen && item"
-      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto"
-      @click.self="emit('close')"
-    >
-      <div
-        class="bg-[#1A1A1A] border border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative my-8"
-      >
-        <!-- Tombol Tutup Modal -->
-        <button
-          class="absolute top-5 right-5 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 w-9 h-9 rounded-full flex items-center justify-center transition-colors"
-          @click="emit('close')"
-          aria-label="Tutup modal"
-        >
-          ✕
-        </button>
+const handleKeydown = (event: KeyboardEvent) =&gt; {
+  if (!props.isOpen) return;
+
+  if (event.key === &#39;Escape&#39;) {
+    if (previewImage.value) {
+      closePreview();
+    } else {
+      emit(&#39;close&#39;);
+    }
+  }
+};
+
+onMounted(() =&gt; {
+  window.addEventListener(&#39;keydown&#39;, handleKeydown);
+});
+
+onUnmounted(() =&gt; {
+  window.removeEventListener(&#39;keydown&#39;, handleKeydown);
+});
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;!-- Modal Utama --&gt;
+  &lt;Transition
+    enter-active-class=&quot;transition duration-300 ease-out&quot;
+    enter-from-class=&quot;opacity-0&quot;
+    enter-to-class=&quot;opacity-100&quot;
+    leave-active-class=&quot;transition duration-200 ease-in&quot;
+    leave-from-class=&quot;opacity-100&quot;
+    leave-to-class=&quot;opacity-0&quot;
+  &gt;
+    &lt;div
+      v-if=&quot;isOpen &amp;&amp; item&quot;
+      class=&quot;fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto&quot;
+      @click.self=&quot;emit(&#39;close&#39;)&quot;
+    &gt;
+      &lt;div
+        ref=&quot;modalCardRef&quot;
+        class=&quot;bg-[#1A1A1A] border border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative my-8&quot;
+      &gt;
+        &lt;!-- Tombol Tutup Modal --&gt;
+        &lt;button
+          type=&quot;button&quot;
+          class=&quot;absolute top-5 right-5 text-white bg-white/15 hover:bg-white/25 border border-white/20 w-9 h-9 rounded-full flex items-center justify-center transition-colors&quot;
+          @click=&quot;emit(&#39;close&#39;)&quot;
+          aria-label=&quot;Tutup modal&quot;
+        &gt;
+          &lt;svg class=&quot;w-4 h-4&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M6 18L18 6M6 6l12 12&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/button&gt;
 
         <!-- Judul & Kategori -->
-        <div class="mb-6 pr-8">
+        <div class="mb-6 pr-10">
           <span
             class="inline-block px-3 py-1 text-xs tracking-wider uppercase rounded-full mb-3 font-medium"
             :class="
               item.category === 'TECH'
                 ? 'bg-sky-400/10 text-sky-400 border border-sky-400/20'
-                : 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20'
+                : 'bg-yellow-200/10 text-yellow-200 border border-yellow-200/20'
             "
           >
-            {{ item.category === 'TECH' ? 'Rekayasa Perangkat Lunak' : 'Relasi Manusia & Operasional' }}
+            {{ item.category === 'TECH' ? 'Rekayasa Perangkat Lunak' : 'Relasi Manusia & Bisnis' }}
           </span>
           <h2 class="text-2xl md:text-3xl font-serif text-white mb-1">
             {{ item.title }}
@@ -97,8 +140,11 @@ const closePreview = () => {
             <h3 class="text-xs uppercase tracking-wider text-gray-400 font-sans">
               Dokumentasi & Tangkapan Layar ({{ allImages.length }} Gambar)
             </h3>
-            <span class="text-[11px] text-yellow-200/70 font-sans">
-              🔍 Ketuk gambar untuk perbesar
+            <span class="inline-flex items-center gap-1.5 text-[11px] text-yellow-200/75 font-sans">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+              </svg>
+              <span>Ketuk gambar untuk perbesar</span>
             </span>
           </div>
 
@@ -114,14 +160,17 @@ const closePreview = () => {
             >
               <img
                 :src="img"
-                :alt="`${item.title} - Foto ${idx + 1}`"
+                :alt="`${item.title} Foto ${idx + 1}`"
                 class="w-auto h-auto max-w-full max-h-[350px] object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
                 loading="lazy"
               />
               <div
-                class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-sm text-white text-[11px] px-2.5 py-1 rounded-md border border-white/15 opacity-80 group-hover:opacity-100 transition-opacity"
+                class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white text-[11px] px-2.5 py-1 rounded-md border border-white/20 opacity-85 group-hover:opacity-100 transition-opacity inline-flex items-center gap-1"
               >
-                Perbesar ⤢
+                <span>Perbesar</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                </svg>
               </div>
             </div>
           </div>
@@ -150,7 +199,7 @@ const closePreview = () => {
         </div>
 
         <!-- Keahlian / Tech Stack -->
-        <div>
+        <div class="mb-6">
           <h4 class="text-xs uppercase tracking-wider text-gray-400 font-sans mb-3">
             Instrumen & Keahlian
           </h4>
@@ -164,11 +213,46 @@ const closePreview = () => {
             </span>
           </div>
         </div>
+
+        <!-- Navigasi Proyek Sebelumnya / Selanjutnya -->
+        <div
+          v-if="hasPrev || hasNext"
+          class="pt-5 border-t border-white/10 flex items-center justify-between gap-3"
+        >
+          <button
+            type="button"
+            class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-medium text-white hover:text-[#FEF08A] transition-colors inline-flex items-center gap-1.5"
+            @click="emit('prev')"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Proyek Sebelumnya</span>
+          </button>
+
+          <span
+            v-if="totalItems && totalItems > 0"
+            class="text-xs text-[#94A3B8] font-medium tabular-nums"
+          >
+            {{ (currentIndex ?? 0) + 1 }} / {{ totalItems }}
+          </span>
+
+          <button
+            type="button"
+            class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-medium text-white hover:text-[#FEF08A] transition-colors inline-flex items-center gap-1.5"
+            @click="emit('next')"
+          >
+            <span>Proyek Selanjutnya</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-  </Transition>
+  &lt;/Transition&gt;
 
-  <!-- Lightbox Overlay (Layar Penuh Saat Gambar Diketuk) -->
+  &lt;!-- Lightbox Overlay (Layar Penuh Saat Gambar Diketuk) --&gt;
   <Transition
     enter-active-class="transition duration-200 ease-out"
     enter-from-class="opacity-0"
@@ -183,20 +267,23 @@ const closePreview = () => {
       @click="closePreview"
     >
       <button
-        class="absolute top-5 right-5 text-white text-lg bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition-colors z-10"
+        type="button"
+        class="absolute top-5 right-5 text-white bg-white/15 hover:bg-white/25 border border-white/20 w-10 h-10 rounded-full flex items-center justify-center transition-colors z-10"
         @click.stop="closePreview"
         aria-label="Tutup pratinjau"
       >
-        ✕
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
       <img
         :src="previewImage"
         alt="Pratinjau Layar Penuh"
         class="max-w-[95vw] max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10"
       />
-      <p class="text-xs text-gray-400 mt-3 font-sans">
-        Ketuk di mana saja untuk menutup
+      <p class="text-xs text-gray-300 mt-3 font-sans">
+        Ketuk di mana saja atau tekan Esc untuk menutup
       </p>
     </div>
-  </Transition>
-</template>
+  &lt;/Transition&gt;
+&lt;/template&gt;
